@@ -1,0 +1,472 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		87AD8B7C19A1265600D3F140 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87AD8B7B19A1265600D3F140 /* Foundation.framework */; };
+		87AD8B7E19A1265600D3F140 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87AD8B7D19A1265600D3F140 /* CoreGraphics.framework */; };
+		87AD8B8019A1265600D3F140 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87AD8B7F19A1265600D3F140 /* UIKit.framework */; };
+		87AD8B8619A1265600D3F140 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 87AD8B8419A1265600D3F140 /* InfoPlist.strings */; };
+		87AD8B8819A1265600D3F140 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 87AD8B8719A1265600D3F140 /* main.m */; };
+		87AD8B8C19A1265600D3F140 /* SSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 87AD8B8B19A1265600D3F140 /* SSAppDelegate.m */; };
+		87AD8B8E19A1265600D3F140 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87AD8B8D19A1265600D3F140 /* Images.xcassets */; };
+		87AD8B9519A1265600D3F140 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87AD8B9419A1265600D3F140 /* XCTest.framework */; };
+		87AD8B9619A1265600D3F140 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87AD8B7B19A1265600D3F140 /* Foundation.framework */; };
+		87AD8B9719A1265600D3F140 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87AD8B7F19A1265600D3F140 /* UIKit.framework */; };
+		87AD8B9F19A1265600D3F140 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 87AD8B9D19A1265600D3F140 /* InfoPlist.strings */; };
+		87AD8BA119A1265600D3F140 /* ShootAndShareTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 87AD8BA019A1265600D3F140 /* ShootAndShareTests.m */; };
+		87AD8BAB19A1268900D3F140 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87AD8BAA19A1268900D3F140 /* AVFoundation.framework */; };
+		87AD8BAD19A1269E00D3F140 /* iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87AD8BAC19A1269E00D3F140 /* iPhone.storyboard */; };
+		87AD8BB019A1276900D3F140 /* SSVideoRecorderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87AD8BAF19A1276900D3F140 /* SSVideoRecorderViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		87AD8B9819A1265600D3F140 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 87AD8B7019A1265600D3F140 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 87AD8B7719A1265600D3F140;
+			remoteInfo = ShootAndShare;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		87AD8B7819A1265600D3F140 /* ShootAndShare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShootAndShare.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		87AD8B7B19A1265600D3F140 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		87AD8B7D19A1265600D3F140 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		87AD8B7F19A1265600D3F140 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		87AD8B8319A1265600D3F140 /* ShootAndShare-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ShootAndShare-Info.plist"; sourceTree = "<group>"; };
+		87AD8B8519A1265600D3F140 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		87AD8B8719A1265600D3F140 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		87AD8B8919A1265600D3F140 /* ShootAndShare-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ShootAndShare-Prefix.pch"; sourceTree = "<group>"; };
+		87AD8B8A19A1265600D3F140 /* SSAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SSAppDelegate.h; sourceTree = "<group>"; };
+		87AD8B8B19A1265600D3F140 /* SSAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SSAppDelegate.m; sourceTree = "<group>"; };
+		87AD8B8D19A1265600D3F140 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		87AD8B9319A1265600D3F140 /* ShootAndShareTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShootAndShareTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		87AD8B9419A1265600D3F140 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		87AD8B9C19A1265600D3F140 /* ShootAndShareTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ShootAndShareTests-Info.plist"; sourceTree = "<group>"; };
+		87AD8B9E19A1265600D3F140 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		87AD8BA019A1265600D3F140 /* ShootAndShareTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShootAndShareTests.m; sourceTree = "<group>"; };
+		87AD8BAA19A1268900D3F140 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		87AD8BAC19A1269E00D3F140 /* iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPhone.storyboard; sourceTree = "<group>"; };
+		87AD8BAE19A1276900D3F140 /* SSVideoRecorderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSVideoRecorderViewController.h; sourceTree = "<group>"; };
+		87AD8BAF19A1276900D3F140 /* SSVideoRecorderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSVideoRecorderViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		87AD8B7519A1265600D3F140 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				87AD8BAB19A1268900D3F140 /* AVFoundation.framework in Frameworks */,
+				87AD8B7E19A1265600D3F140 /* CoreGraphics.framework in Frameworks */,
+				87AD8B8019A1265600D3F140 /* UIKit.framework in Frameworks */,
+				87AD8B7C19A1265600D3F140 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		87AD8B9019A1265600D3F140 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				87AD8B9519A1265600D3F140 /* XCTest.framework in Frameworks */,
+				87AD8B9719A1265600D3F140 /* UIKit.framework in Frameworks */,
+				87AD8B9619A1265600D3F140 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		87AD8B6F19A1265600D3F140 = {
+			isa = PBXGroup;
+			children = (
+				87AD8B8119A1265600D3F140 /* ShootAndShare */,
+				87AD8B9A19A1265600D3F140 /* ShootAndShareTests */,
+				87AD8B7A19A1265600D3F140 /* Frameworks */,
+				87AD8B7919A1265600D3F140 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		87AD8B7919A1265600D3F140 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				87AD8B7819A1265600D3F140 /* ShootAndShare.app */,
+				87AD8B9319A1265600D3F140 /* ShootAndShareTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		87AD8B7A19A1265600D3F140 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				87AD8BAA19A1268900D3F140 /* AVFoundation.framework */,
+				87AD8B7B19A1265600D3F140 /* Foundation.framework */,
+				87AD8B7D19A1265600D3F140 /* CoreGraphics.framework */,
+				87AD8B7F19A1265600D3F140 /* UIKit.framework */,
+				87AD8B9419A1265600D3F140 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		87AD8B8119A1265600D3F140 /* ShootAndShare */ = {
+			isa = PBXGroup;
+			children = (
+				87AD8B8A19A1265600D3F140 /* SSAppDelegate.h */,
+				87AD8B8B19A1265600D3F140 /* SSAppDelegate.m */,
+				87AD8BAE19A1276900D3F140 /* SSVideoRecorderViewController.h */,
+				87AD8BAF19A1276900D3F140 /* SSVideoRecorderViewController.m */,
+				87AD8BAC19A1269E00D3F140 /* iPhone.storyboard */,
+				87AD8B8D19A1265600D3F140 /* Images.xcassets */,
+				87AD8B8219A1265600D3F140 /* Supporting Files */,
+			);
+			path = ShootAndShare;
+			sourceTree = "<group>";
+		};
+		87AD8B8219A1265600D3F140 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				87AD8B8319A1265600D3F140 /* ShootAndShare-Info.plist */,
+				87AD8B8419A1265600D3F140 /* InfoPlist.strings */,
+				87AD8B8719A1265600D3F140 /* main.m */,
+				87AD8B8919A1265600D3F140 /* ShootAndShare-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		87AD8B9A19A1265600D3F140 /* ShootAndShareTests */ = {
+			isa = PBXGroup;
+			children = (
+				87AD8BA019A1265600D3F140 /* ShootAndShareTests.m */,
+				87AD8B9B19A1265600D3F140 /* Supporting Files */,
+			);
+			path = ShootAndShareTests;
+			sourceTree = "<group>";
+		};
+		87AD8B9B19A1265600D3F140 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				87AD8B9C19A1265600D3F140 /* ShootAndShareTests-Info.plist */,
+				87AD8B9D19A1265600D3F140 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		87AD8B7719A1265600D3F140 /* ShootAndShare */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 87AD8BA419A1265600D3F140 /* Build configuration list for PBXNativeTarget "ShootAndShare" */;
+			buildPhases = (
+				87AD8B7419A1265600D3F140 /* Sources */,
+				87AD8B7519A1265600D3F140 /* Frameworks */,
+				87AD8B7619A1265600D3F140 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ShootAndShare;
+			productName = ShootAndShare;
+			productReference = 87AD8B7819A1265600D3F140 /* ShootAndShare.app */;
+			productType = "com.apple.product-type.application";
+		};
+		87AD8B9219A1265600D3F140 /* ShootAndShareTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 87AD8BA719A1265600D3F140 /* Build configuration list for PBXNativeTarget "ShootAndShareTests" */;
+			buildPhases = (
+				87AD8B8F19A1265600D3F140 /* Sources */,
+				87AD8B9019A1265600D3F140 /* Frameworks */,
+				87AD8B9119A1265600D3F140 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				87AD8B9919A1265600D3F140 /* PBXTargetDependency */,
+			);
+			name = ShootAndShareTests;
+			productName = ShootAndShareTests;
+			productReference = 87AD8B9319A1265600D3F140 /* ShootAndShareTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		87AD8B7019A1265600D3F140 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = SS;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Leonard Li";
+				TargetAttributes = {
+					87AD8B7719A1265600D3F140 = {
+						DevelopmentTeam = D3R2N4L8FQ;
+					};
+					87AD8B9219A1265600D3F140 = {
+						TestTargetID = 87AD8B7719A1265600D3F140;
+					};
+				};
+			};
+			buildConfigurationList = 87AD8B7319A1265600D3F140 /* Build configuration list for PBXProject "ShootAndShare" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 87AD8B6F19A1265600D3F140;
+			productRefGroup = 87AD8B7919A1265600D3F140 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				87AD8B7719A1265600D3F140 /* ShootAndShare */,
+				87AD8B9219A1265600D3F140 /* ShootAndShareTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		87AD8B7619A1265600D3F140 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				87AD8B8619A1265600D3F140 /* InfoPlist.strings in Resources */,
+				87AD8BAD19A1269E00D3F140 /* iPhone.storyboard in Resources */,
+				87AD8B8E19A1265600D3F140 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		87AD8B9119A1265600D3F140 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				87AD8B9F19A1265600D3F140 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		87AD8B7419A1265600D3F140 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				87AD8B8C19A1265600D3F140 /* SSAppDelegate.m in Sources */,
+				87AD8B8819A1265600D3F140 /* main.m in Sources */,
+				87AD8BB019A1276900D3F140 /* SSVideoRecorderViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		87AD8B8F19A1265600D3F140 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				87AD8BA119A1265600D3F140 /* ShootAndShareTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		87AD8B9919A1265600D3F140 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 87AD8B7719A1265600D3F140 /* ShootAndShare */;
+			targetProxy = 87AD8B9819A1265600D3F140 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		87AD8B8419A1265600D3F140 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				87AD8B8519A1265600D3F140 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		87AD8B9D19A1265600D3F140 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				87AD8B9E19A1265600D3F140 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		87AD8BA219A1265600D3F140 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		87AD8BA319A1265600D3F140 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		87AD8BA519A1265600D3F140 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ShootAndShare/ShootAndShare-Prefix.pch";
+				INFOPLIST_FILE = "ShootAndShare/ShootAndShare-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		87AD8BA619A1265600D3F140 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ShootAndShare/ShootAndShare-Prefix.pch";
+				INFOPLIST_FILE = "ShootAndShare/ShootAndShare-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		87AD8BA819A1265600D3F140 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ShootAndShare.app/ShootAndShare";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ShootAndShare/ShootAndShare-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "ShootAndShareTests/ShootAndShareTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		87AD8BA919A1265600D3F140 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ShootAndShare.app/ShootAndShare";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ShootAndShare/ShootAndShare-Prefix.pch";
+				INFOPLIST_FILE = "ShootAndShareTests/ShootAndShareTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		87AD8B7319A1265600D3F140 /* Build configuration list for PBXProject "ShootAndShare" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				87AD8BA219A1265600D3F140 /* Debug */,
+				87AD8BA319A1265600D3F140 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		87AD8BA419A1265600D3F140 /* Build configuration list for PBXNativeTarget "ShootAndShare" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				87AD8BA519A1265600D3F140 /* Debug */,
+				87AD8BA619A1265600D3F140 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		87AD8BA719A1265600D3F140 /* Build configuration list for PBXNativeTarget "ShootAndShareTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				87AD8BA819A1265600D3F140 /* Debug */,
+				87AD8BA919A1265600D3F140 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 87AD8B7019A1265600D3F140 /* Project object */;
+}
