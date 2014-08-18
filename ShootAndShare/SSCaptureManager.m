@@ -94,6 +94,13 @@
     }
 }
 
+- (void)startRecordingForTwoSeconds {
+    [self startRecording];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 2 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        [self stopRecording];
+    });
+}
+
 - (void)startRecording {
     NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyy-MM-dd-HH-mm-ss"];

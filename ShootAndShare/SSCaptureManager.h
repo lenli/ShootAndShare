@@ -18,6 +18,7 @@
 @property (readonly, nonatomic) BOOL isRecording;
 
 - (instancetype)initWithView:(UIView *)view;
+- (void)startRecordingForTwoSeconds;
 - (void)startRecording;
 - (void)stopRecording;
 

@@ -8,12 +8,13 @@
 
 #import "SSVideoRecorderViewController.h"
 #import "SSCaptureManager.h"
+#import <AssetsLibrary/AssetsLibrary.h>
 
 @interface SSVideoRecorderViewController () <SSCaptureManagerDelegate>
 @property (strong, nonatomic) AVCaptureSession *captureSession;
 @property (strong, nonatomic) SSCaptureManager *captureManager;
 @property (weak, nonatomic) IBOutlet UIView *cameraPreviewView;
-
+- (IBAction)captureButtonTapped:(UIButton *)sender;
 
 @end
 
@@ -25,8 +26,6 @@
     self.captureManager = [[SSCaptureManager alloc] initWithView:self.cameraPreviewView];
     self.captureManager.delegate = self;
     
-    [self.captureManager startRecording];
-    [self.captureManager stopRecording];
 }
 
 
@@ -45,8 +44,51 @@
     
     if (recordedSuccessfully) {
         NSLog(@"recordedSuccessfully");
+        [self saveRecordedFile:outputFileURL];
     } else {
-        NSLog(@"Error capturing video.  Please try again.");
+        NSLog(@"Error capturing video: %@", [error localizedDescription]);
     }
 }
+
+- (IBAction)captureButtonTapped:(UIButton *)sender {
+    [self.captureManager startRecordingForTwoSeconds];
+}
+
+
+- (void)saveRecordedFile:(NSURL *)recordedFile {
+    NSLog(@"Saving to Album");
+    
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(queue, ^{
+        
+        ALAssetsLibrary *assetLibrary = [[ALAssetsLibrary alloc] init];
+        [assetLibrary writeVideoAtPathToSavedPhotosAlbum:recordedFile
+                                         completionBlock:
+         ^(NSURL *assetURL, NSError *error) {
+             
+             dispatch_async(dispatch_get_main_queue(), ^{
+                 NSString *title;
+                 NSString *message;
+                 
+                 if (error != nil) {
+                     
+                     title = @"Failed to save video";
+                     message = [error localizedDescription];
+                 }
+                 else {
+                     title = @"Saved!";
+                     message = nil;
+                 }
+                 
+                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title
+                                                                 message:message
+                                                                delegate:nil
+                                                       cancelButtonTitle:@"OK"
+                                                       otherButtonTitles:nil];
+                 [alert show];
+             });
+         }];
+    });
+}
+
 @end
