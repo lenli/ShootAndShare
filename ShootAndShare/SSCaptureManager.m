@@ -38,7 +38,6 @@
 }
 
 - (void)initializeVideoDeviceInput {
-    
     NSError *error;
     AVCaptureDevice *inputDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
     AVCaptureDeviceInput *deviceInput = [AVCaptureDeviceInput deviceInputWithDevice:inputDevice
@@ -63,9 +62,7 @@
 
 }
 
-
 - (void)initializeAudioDeviceInput {
-    
     NSError *error;
     AVCaptureDevice *audioDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeAudio];
     AVCaptureDeviceInput *audioInput = [AVCaptureDeviceInput deviceInputWithDevice:audioDevice error:&error];
@@ -102,24 +99,28 @@
 }
 
 - (void)startRecording {
-    NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy-MM-dd-HH-mm-ss"];
-    NSString* dateTimePrefix = [formatter stringFromDate:[NSDate date]];
-    
-    int fileNamePostfix = 0;
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *filePath = nil;
-    do
-        filePath =[NSString stringWithFormat:@"/%@/%@-%i.mp4", documentsDirectory, dateTimePrefix, fileNamePostfix++];
-    while ([[NSFileManager defaultManager] fileExistsAtPath:filePath]);
-    
-    NSURL *fileURL = [NSURL URLWithString:[@"file://" stringByAppendingString:filePath]];
-    [self.fileOutput startRecordingToOutputFileURL:fileURL recordingDelegate:self];
+    if (!self.isRecording) {
+        NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"yyyy-MM-dd-HH-mm-ss"];
+        NSString* dateTimePrefix = [formatter stringFromDate:[NSDate date]];
+        
+        int fileNamePostfix = 0;
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documentsDirectory = [paths objectAtIndex:0];
+        NSString *filePath = nil;
+        do
+            filePath =[NSString stringWithFormat:@"/%@/%@-%i.mp4", documentsDirectory, dateTimePrefix, fileNamePostfix++];
+        while ([[NSFileManager defaultManager] fileExistsAtPath:filePath]);
+        
+        NSURL *fileURL = [NSURL URLWithString:[@"file://" stringByAppendingString:filePath]];
+        [self.fileOutput startRecordingToOutputFileURL:fileURL recordingDelegate:self];
+    }
 }
 
 - (void)stopRecording {
-    [self.fileOutput stopRecording];
+    if (self.isRecording) {
+        [self.fileOutput stopRecording];
+    }
 }
 
 #pragma mark - AVCaptureFileOutputRecordingDelegate
