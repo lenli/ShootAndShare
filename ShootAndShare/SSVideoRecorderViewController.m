@@ -8,6 +8,7 @@
 
 #import "SSVideoRecorderViewController.h"
 #import "SSCaptureManager.h"
+#import <AVFoundation/AVFoundation.h>
 #import <AssetsLibrary/AssetsLibrary.h>
 #import <Social/Social.h>
 #import <Accounts/Accounts.h>
@@ -60,6 +61,7 @@
 
 - (IBAction)captureButtonTapped:(UIButton *)sender {
     self.captureButton.enabled = NO;
+    [self.captureButton setTitleColor:[UIColor redColor] forState:UIControlStateDisabled];
     [self.recordingResponseLabel setHidden:NO];
     [self.recordingResponseLabel setText:@"Recording"];
     [self.captureManager startRecordingForTwoSeconds];
@@ -78,7 +80,6 @@
              
              dispatch_async(dispatch_get_main_queue(), ^{
                  [self.recordingResponseLabel setText:@"Saving To Facebook"];
-                 self.captureButton.enabled = YES;
                  
                  NSString *title;
                  NSString *message;
@@ -115,7 +116,7 @@
     NSDictionary *publishWritePermisson = @{
                                          ACFacebookAppIdKey: @"1425921937668923", // Using old appID
                                          ACFacebookPermissionsKey: @[@"publish_actions", ],
-                                         @"ACFacebookAudienceKey": ACFacebookAudienceFriends
+                                         @"ACFacebookAudienceKey": ACFacebookAudienceOnlyMe
                                          };
     ACAccountType *facebookAccountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierFacebook];
     
@@ -134,7 +135,8 @@
                     NSData *videoData = [NSData dataWithContentsOfURL:videoPath];
                     
                     NSString *status = @"Shoot And Share";
-                    NSDictionary *params = @{@"title":status, @"description":status};
+                    NSDictionary *params = @{@"title":status,
+                                             @"description":status};
                     
                     SLRequest *request = [SLRequest requestForServiceType:SLServiceTypeFacebook
                                                             requestMethod:SLRequestMethodPOST
@@ -172,6 +174,7 @@
                             [alert show];
                             
                             [self.recordingResponseLabel setHidden:YES];
+                            self.captureButton.enabled = YES;
                         });
                     }];
                 } else {
@@ -186,3 +189,4 @@
 
 
 @end
+

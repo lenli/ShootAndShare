@@ -13,6 +13,7 @@
 
 @property (strong, nonatomic) AVCaptureSession *captureSession;
 @property (strong, nonatomic) AVCaptureMovieFileOutput *fileOutput;
+@property (strong, nonatomic) NSURL *squareOutputFileURL;
 @property (strong, nonatomic) AVCaptureVideoPreviewLayer *previewLayer;
 @property (strong, nonatomic) UIView *previewView;
 
@@ -25,7 +26,7 @@
     self = [super init];
     if (self) {
         self.captureSession = [[AVCaptureSession alloc] init];
-        self.captureSession.sessionPreset = AVCaptureSessionPresetInputPriority;
+        self.captureSession.sessionPreset = AVCaptureSessionPresetMedium;
         self.previewView = previewView;
         
         [self initializeVideoDeviceInput];
@@ -54,12 +55,10 @@
     
     self.previewLayer = [AVCaptureVideoPreviewLayer layerWithSession:self.captureSession];
     self.previewLayer.frame = self.previewView.bounds;
-    [self.previewLayer setVideoGravity:AVLayerVideoGravityResize];
+    [self.previewLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
     
     [self.previewView.layer addSublayer:self.previewLayer];
-    
     [self.captureSession startRunning];
-
 }
 
 - (void)initializeAudioDeviceInput {
@@ -114,6 +113,7 @@
         
         NSURL *fileURL = [NSURL URLWithString:[@"file://" stringByAppendingString:filePath]];
         [self.fileOutput startRecordingToOutputFileURL:fileURL recordingDelegate:self];
+        
     }
 }
 
@@ -121,6 +121,56 @@
     if (self.isRecording) {
         [self.fileOutput stopRecording];
     }
+}
+
+- (void)convertVideoToSquare:(NSURL *)filePath
+                   withError:(NSError *)recordingError {
+    // output file
+    NSString* docFolder = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    NSString* outputPath = [docFolder stringByAppendingPathComponent:@"squareVideo.mov"];
+    if ([[NSFileManager defaultManager] fileExistsAtPath:outputPath])
+        [[NSFileManager defaultManager] removeItemAtPath:outputPath error:nil];
+    
+    // input file
+    AVAsset* asset = [AVAsset assetWithURL:filePath];
+    
+    AVMutableComposition *composition = [AVMutableComposition composition];
+    [composition addMutableTrackWithMediaType:AVMediaTypeVideo preferredTrackID:kCMPersistentTrackID_Invalid];
+    
+    // input clip
+    AVAssetTrack *clipVideoTrack = [[asset tracksWithMediaType:AVMediaTypeVideo] objectAtIndex:0];
+    
+    // make it square
+    AVMutableVideoComposition* videoComposition = [AVMutableVideoComposition videoComposition];
+    videoComposition.renderSize = CGSizeMake(clipVideoTrack.naturalSize.width, clipVideoTrack.naturalSize.height);
+    videoComposition.frameDuration = CMTimeMake(1, 60);
+    
+    AVMutableVideoCompositionInstruction *instruction = [AVMutableVideoCompositionInstruction videoCompositionInstruction];
+    instruction.timeRange = CMTimeRangeMake(kCMTimeZero, CMTimeMakeWithSeconds(120, 2));
+    
+    // rotate to portrait
+    AVMutableVideoCompositionLayerInstruction* transformer = [AVMutableVideoCompositionLayerInstruction videoCompositionLayerInstructionWithAssetTrack:clipVideoTrack];
+    CGAffineTransform t1 = CGAffineTransformMakeTranslation(clipVideoTrack.naturalSize.height, -(clipVideoTrack.naturalSize.width - clipVideoTrack.naturalSize.height) /2 );
+    CGAffineTransform t2 = CGAffineTransformRotate(t1, M_PI_2);
+    
+    CGAffineTransform finalTransform = t2;
+    [transformer setTransform:finalTransform atTime:kCMTimeZero];
+    instruction.layerInstructions = [NSArray arrayWithObject:transformer];
+    videoComposition.instructions = [NSArray arrayWithObject:instruction];
+    
+    // export
+    AVAssetExportSession *exporter = [[AVAssetExportSession alloc] initWithAsset:asset presetName:AVAssetExportPresetHighestQuality] ;
+    exporter.videoComposition = videoComposition;
+    exporter.outputURL=[NSURL fileURLWithPath:outputPath];
+    exporter.outputFileType=AVFileTypeQuickTimeMovie;
+    
+    [exporter exportAsynchronouslyWithCompletionHandler:^(void){
+        NSLog(@"Exporting Square Video Done!");
+        
+        if ([self.delegate respondsToSelector:@selector(didFinishRecordingToOutputFileAtURL:error:)]) {
+            [self.delegate didFinishRecordingToOutputFileAtURL:[NSURL fileURLWithPath:outputPath] error:recordingError];
+        }
+    }];
 }
 
 #pragma mark - AVCaptureFileOutputRecordingDelegate
@@ -133,12 +183,13 @@
 
 - (void)                 captureOutput:(AVCaptureFileOutput *)captureOutput
    didFinishRecordingToOutputFileAtURL:(NSURL *)outputFileURL
-                       fromConnections:(NSArray *)connections error:(NSError *)error {
+                       fromConnections:(NSArray *)connections
+                                 error:(NSError *)error {
     _isRecording = NO;
-    
-    if ([self.delegate respondsToSelector:@selector(didFinishRecordingToOutputFileAtURL:error:)]) {
-        [self.delegate didFinishRecordingToOutputFileAtURL:outputFileURL error:error];
+    if (error) {
+        NSLog(@"Error capturing Output: %@", [error localizedDescription]);
     }
+    [self convertVideoToSquare:outputFileURL withError:error];
 }
 
 @end
