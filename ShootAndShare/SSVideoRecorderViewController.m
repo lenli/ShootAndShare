@@ -7,9 +7,13 @@
 //
 
 #import "SSVideoRecorderViewController.h"
+#import "SSCaptureManager.h"
 
-@interface SSVideoRecorderViewController ()
+@interface SSVideoRecorderViewController () <SSCaptureManagerDelegate>
+@property (strong, nonatomic) AVCaptureSession *captureSession;
+@property (strong, nonatomic) SSCaptureManager *captureManager;
 @property (weak, nonatomic) IBOutlet UIView *cameraPreviewView;
+
 
 @end
 
@@ -17,34 +21,32 @@
 
 - (void)viewDidLoad
 {
-    NSLog(@"view did load");
     [super viewDidLoad];
-    [self setupCamera];
+    self.captureManager = [[SSCaptureManager alloc] initWithView:self.cameraPreviewView];
+    self.captureManager.delegate = self;
+    
+    [self.captureManager startRecording];
+    [self.captureManager stopRecording];
 }
 
-- (void)setupCamera {
-    NSLog(@"Setup Camera");
-    // Session
-    AVCaptureSession *session = [AVCaptureSession new];
-    [session setSessionPreset:AVCaptureSessionPresetMedium];
-    
-    // Capture device
-    AVCaptureDevice *inputDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
-    NSError *error;
-    
-    // Capture Device Input
-    AVCaptureDeviceInput *deviceInput = [AVCaptureDeviceInput deviceInputWithDevice:inputDevice error:&error];
-	if ( [session canAddInput:deviceInput] )
-        [session addInput:deviceInput];
-    
-    // Preview
-    AVCaptureVideoPreviewLayer *previewLayer = [AVCaptureVideoPreviewLayer layerWithSession:session];
-    previewLayer.frame = self.cameraPreviewView.bounds;
-    [previewLayer setVideoGravity:AVLayerVideoGravityResize];
-    
-    [self.cameraPreviewView.layer addSublayer:previewLayer];
-    
-    [session startRunning];
-}
 
+- (void)didFinishRecordingToOutputFileAtURL:(NSURL *)outputFileURL
+                                      error:(NSError *)error {
+    NSLog(@"didFinishRecordingToOutputFileAtURL");
+    
+    BOOL recordedSuccessfully = YES;
+    if ([error code] != noErr) {
+        // A problem occurred: Find out if the recording was successful.
+        id value = [[error userInfo] objectForKey:AVErrorRecordingSuccessfullyFinishedKey];
+        if (value) {
+            recordedSuccessfully = [value boolValue];
+        }
+    }
+    
+    if (recordedSuccessfully) {
+        NSLog(@"recordedSuccessfully");
+    } else {
+        NSLog(@"Error capturing video.  Please try again.");
+    }
+}
 @end

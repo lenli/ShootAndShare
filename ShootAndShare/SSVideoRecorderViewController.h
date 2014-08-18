@@ -11,6 +11,5 @@
 //#import <QuartzCore/QuartzCore.h>
 //#import <CoreMedia/CoreMedia.h>
 
-@interface SSVideoRecorderViewController : UIViewController <AVCaptureVideoDataOutputSampleBufferDelegate>
-
+@interface SSVideoRecorderViewController : UIViewController 
 @end

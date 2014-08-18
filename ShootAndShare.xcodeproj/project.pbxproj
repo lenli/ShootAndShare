@@ -22,6 +22,7 @@
 		87AD8BAB19A1268900D3F140 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87AD8BAA19A1268900D3F140 /* AVFoundation.framework */; };
 		87AD8BAD19A1269E00D3F140 /* iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87AD8BAC19A1269E00D3F140 /* iPhone.storyboard */; };
 		87AD8BB019A1276900D3F140 /* SSVideoRecorderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87AD8BAF19A1276900D3F140 /* SSVideoRecorderViewController.m */; };
+		87AD8BB319A1CEDD00D3F140 /* SSCaptureManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 87AD8BB219A1CEDD00D3F140 /* SSCaptureManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,8 @@
 		87AD8BAC19A1269E00D3F140 /* iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPhone.storyboard; sourceTree = "<group>"; };
 		87AD8BAE19A1276900D3F140 /* SSVideoRecorderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSVideoRecorderViewController.h; sourceTree = "<group>"; };
 		87AD8BAF19A1276900D3F140 /* SSVideoRecorderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSVideoRecorderViewController.m; sourceTree = "<group>"; };
+		87AD8BB119A1CEDD00D3F140 /* SSCaptureManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSCaptureManager.h; sourceTree = "<group>"; };
+		87AD8BB219A1CEDD00D3F140 /* SSCaptureManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSCaptureManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +121,8 @@
 			children = (
 				87AD8B8A19A1265600D3F140 /* SSAppDelegate.h */,
 				87AD8B8B19A1265600D3F140 /* SSAppDelegate.m */,
+				87AD8BB119A1CEDD00D3F140 /* SSCaptureManager.h */,
+				87AD8BB219A1CEDD00D3F140 /* SSCaptureManager.m */,
 				87AD8BAE19A1276900D3F140 /* SSVideoRecorderViewController.h */,
 				87AD8BAF19A1276900D3F140 /* SSVideoRecorderViewController.m */,
 				87AD8BAC19A1269E00D3F140 /* iPhone.storyboard */,
@@ -258,6 +263,7 @@
 			files = (
 				87AD8B8C19A1265600D3F140 /* SSAppDelegate.m in Sources */,
 				87AD8B8819A1265600D3F140 /* main.m in Sources */,
+				87AD8BB319A1CEDD00D3F140 /* SSCaptureManager.m in Sources */,
 				87AD8BB019A1276900D3F140 /* SSVideoRecorderViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
