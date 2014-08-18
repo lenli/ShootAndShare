@@ -61,6 +61,7 @@
 - (IBAction)captureButtonTapped:(UIButton *)sender {
     self.captureButton.enabled = NO;
     [self.recordingResponseLabel setHidden:NO];
+    [self.recordingResponseLabel setText:@"Recording"];
     [self.captureManager startRecordingForTwoSeconds];
 }
 
@@ -76,7 +77,7 @@
          ^(NSURL *assetURL, NSError *error) {
              
              dispatch_async(dispatch_get_main_queue(), ^{
-                 [self.recordingResponseLabel setHidden:YES];
+                 [self.recordingResponseLabel setText:@"Saving To Facebook"];
                  self.captureButton.enabled = YES;
                  
                  NSString *title;
@@ -132,7 +133,7 @@
                     
                     NSData *videoData = [NSData dataWithContentsOfURL:videoPath];
                     
-                    NSString *status = @"Testing123";
+                    NSString *status = @"Shoot And Share";
                     NSDictionary *params = @{@"title":status, @"description":status};
                     
                     SLRequest *request = [SLRequest requestForServiceType:SLServiceTypeFacebook
@@ -147,27 +148,31 @@
                     request.account = facebookAccount;
                     [request performRequestWithHandler:^(NSData *data,
                                                          NSHTTPURLResponse *response,NSError * error){
+                        
                         NSLog(@"response = %@", response);
                         NSLog(@"error = %@", [error localizedDescription]);
                         
-                        NSString *title;
-                        NSString *message;
-                        
-                        if (error) {
-                            title = @"Failed to Post Video";
-                            message = [error localizedDescription];
-                        } else {
-                            title = @"Video Posted to Facebook";
-                            message = nil;
-                        }
-                        
-                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title
-                                                                        message:message
-                                                                       delegate:nil
-                                                              cancelButtonTitle:@"OK"
-                                                              otherButtonTitles:nil];
-                        [alert show];
-                        
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            NSString *title;
+                            NSString *message;
+                            
+                            if (error) {
+                                title = @"Failed to Post Video";
+                                message = [error localizedDescription];
+                            } else {
+                                title = @"Video Posted to Facebook";
+                                message = nil;
+                            }
+                            
+                            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title
+                                                                            message:message
+                                                                           delegate:nil
+                                                                  cancelButtonTitle:@"OK"
+                                                                  otherButtonTitles:nil];
+                            [alert show];
+                            
+                            [self.recordingResponseLabel setHidden:YES];
+                        });
                     }];
                 } else {
                     NSLog(@"access to facebook is not granted: %@", [error localizedDescription]);
