@@ -16,6 +16,7 @@
 @property (strong, nonatomic) NSURL *squareOutputFileURL;
 @property (strong, nonatomic) AVCaptureVideoPreviewLayer *previewLayer;
 @property (strong, nonatomic) UIView *previewView;
+@property (readwrite, nonatomic) BOOL isRecording;
 
 @end
 
@@ -142,7 +143,7 @@
     
     // make it square
     AVMutableVideoComposition* videoComposition = [AVMutableVideoComposition videoComposition];
-    videoComposition.renderSize = CGSizeMake(clipVideoTrack.naturalSize.width, clipVideoTrack.naturalSize.height);
+    videoComposition.renderSize = CGSizeMake(clipVideoTrack.naturalSize.height, clipVideoTrack.naturalSize.height);
     videoComposition.frameDuration = CMTimeMake(1, 60);
     
     AVMutableVideoCompositionInstruction *instruction = [AVMutableVideoCompositionInstruction videoCompositionInstruction];
@@ -150,7 +151,7 @@
     
     // rotate to portrait
     AVMutableVideoCompositionLayerInstruction* transformer = [AVMutableVideoCompositionLayerInstruction videoCompositionLayerInstructionWithAssetTrack:clipVideoTrack];
-    CGAffineTransform t1 = CGAffineTransformMakeTranslation(clipVideoTrack.naturalSize.height, -(clipVideoTrack.naturalSize.width - clipVideoTrack.naturalSize.height) /2 );
+    CGAffineTransform t1 = CGAffineTransformMakeTranslation(clipVideoTrack.naturalSize.height, 0);
     CGAffineTransform t2 = CGAffineTransformRotate(t1, M_PI_2);
     
     CGAffineTransform finalTransform = t2;
@@ -178,14 +179,14 @@
 - (void)                 captureOutput:(AVCaptureFileOutput *)captureOutput
     didStartRecordingToOutputFileAtURL:(NSURL *)fileURL
                        fromConnections:(NSArray *)connections {
-    _isRecording = YES;
+    self.isRecording = YES;
 }
 
 - (void)                 captureOutput:(AVCaptureFileOutput *)captureOutput
    didFinishRecordingToOutputFileAtURL:(NSURL *)outputFileURL
                        fromConnections:(NSArray *)connections
                                  error:(NSError *)error {
-    _isRecording = NO;
+    self.isRecording = NO;
     if (error) {
         NSLog(@"Error capturing Output: %@", [error localizedDescription]);
     }
